@@ -1,0 +1,16 @@
+load("@label_list_flag_emulation//:defs.bzl", "label_list_flag_emulation")
+load(":implementation_token.bzl", "example_implementation_token")
+load(":print_and_fail.bzl", "print_and_fail")
+
+label_list_flag_emulation(
+    name = "example",
+    build_setting_default = [],
+    implementation_token = example_implementation_token,
+)
+
+# bazel build :print_and_fail --//feature_request/label_list_flag/example=@bazel_skylib//:lib --//feature_request/label_list_flag/example=@platforms//os
+print_and_fail(
+    name = "print_and_fail",
+    label_list_flag_emulation = ":example",
+    testonly = True,
+)

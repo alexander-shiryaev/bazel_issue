@@ -1,0 +1,8 @@
+module(
+    name = "label_list_flag_emulation",
+    compatibility_level = 1,
+    repo_name = "label_list_flag_emulation",
+    version = "0.0",
+)
+
+bazel_dep(name = "bazel_skylib", version = "1.1.1")

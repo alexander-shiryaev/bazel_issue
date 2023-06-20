@@ -1,0 +1,9 @@
+filegroup(
+    name = "_nothing",
+)
+
+label_flag(
+    name = "_item",
+    build_setting_default = "_nothing",
+    visibility = ["//visibility:public"],
+)

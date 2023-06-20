@@ -14,3 +14,8 @@ http_archive(
 load("@bazel_skylib//:workspace.bzl", "bazel_skylib_workspace")
 
 bazel_skylib_workspace()
+
+local_repository(
+    name = "label_list_flag_emulation",
+    path = "feature_request/label_list_flag/emulation",
+)
