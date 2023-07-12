@@ -1,0 +1,2 @@
+build --experimental_convenience_symlinks=ignore
+build --experimental_cc_shared_library

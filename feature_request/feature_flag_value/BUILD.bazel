@@ -1,0 +1,21 @@
+load(":defs.bzl", "shared_lib_name_info", "not_implemented")
+load("@bazel_skylib//rules:common_settings.bzl", "string_flag")
+
+resolve_feature_flag = not_implemented
+
+string_flag(
+    name = "shared_lib_name_prefix",
+    build_setting_default = "",
+    visibility = ["//visibility:public"],
+)
+
+shared_lib_name_info(
+    name = "mylib_name",
+    basename = "mylib.so",
+)
+
+# bazel build --experimental_cc_shared_library --@feature_flag_value//:shared_lib_name_prefix=foo_ @feature_flag_value//:mylib
+cc_shared_library(
+    name = "mylib",
+    shared_lib_name = resolve_feature_flag(":mylib_name"),
+)

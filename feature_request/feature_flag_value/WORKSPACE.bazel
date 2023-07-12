@@ -1,4 +1,4 @@
-workspace(name = "bazel_issues")
+workspace(name = "feature_flag_value")
 
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 
@@ -14,13 +14,3 @@ http_archive(
 load("@bazel_skylib//:workspace.bzl", "bazel_skylib_workspace")
 
 bazel_skylib_workspace()
-
-local_repository(
-    name = "label_list_flag_emulation",
-    path = "feature_request/label_list_flag/emulation",
-)
-
-local_repository(
-    name = "feature_flag_value",
-    path = "feature_request/feature_flag_value",
-)
