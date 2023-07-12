@@ -1,7 +1,9 @@
-load(":defs.bzl", "shared_lib_name_info", "not_implemented")
+load(":defs.bzl", "shared_lib_name_info", "resolve_feature_flag_emulation")
 load("@bazel_skylib//rules:common_settings.bzl", "string_flag")
 
-resolve_feature_flag = not_implemented
+resolve_feature_flag = resolve_feature_flag_emulation(
+    allowed_values = ["mylib.so", "foo_mylib.so", "bar_mylib.so"],
+)
 
 string_flag(
     name = "shared_lib_name_prefix",
@@ -17,5 +19,5 @@ shared_lib_name_info(
 # bazel build --experimental_cc_shared_library --@feature_flag_value//:shared_lib_name_prefix=foo_ @feature_flag_value//:mylib
 cc_shared_library(
     name = "mylib",
-    shared_lib_name = resolve_feature_flag(":mylib_name"),
+    shared_lib_name = resolve_feature_flag("mylib_name"),
 )
