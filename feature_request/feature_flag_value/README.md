@@ -3,9 +3,9 @@ https://github.com/bazelbuild/bazel/issues/18911
 ### Description of the feature request:
 
 I would like to pass a computed string to an arbitrary rule. If the string can only take a finite number of values,
-the problem can be solved by implementing a rule that returns `config_common.FeatureFlagInfo` and a set of config_setting,
+the problem can be solved by implementing a rule that returns `config_common.FeatureFlagInfo` and a set of `config_setting`,
 one for each of the allowed values (see `resolve_feature_flag_emulation`).
-```
+```bzl
 def resolve_feature_flag_emulation(allowed_values):
     def _(feature_flag_name):
         cases = {}
