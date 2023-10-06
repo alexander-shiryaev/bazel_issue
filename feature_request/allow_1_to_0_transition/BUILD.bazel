@@ -1,4 +1,4 @@
-load(":defs.bzl", "apply_transition")
+load(":defs.bzl", "apply_transition_and_fail")
 load("@bazel_skylib//rules:common_settings.bzl", "string_flag")
 
 string_flag(
@@ -7,12 +7,12 @@ string_flag(
     visibility = ["//visibility:public"],
 )
 
-apply_transition(
+apply_transition_and_fail(
     name = "three",
     colors = ["red", "green", "blue"],
 )
 
-apply_transition(
+apply_transition_and_fail(
     name = "zero",
     colors = [],
 )

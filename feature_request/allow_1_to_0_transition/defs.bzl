@@ -17,14 +17,14 @@ _transition = transition(
     ],
 )
 
-def _apply_transition_impl(ctx):
+def _apply_transition_and_fail_impl(ctx):
     fail([
         target[BuildSettingInfo].value
         for target in ctx.split_attr._flag.values()
     ])
 
-apply_transition = rule(
-    implementation = _apply_transition_impl,
+apply_transition_and_fail = rule(
+    implementation = _apply_transition_and_fail_impl,
     attrs = {
         "colors": attr.string_list(),
         "_flag": attr.label(
