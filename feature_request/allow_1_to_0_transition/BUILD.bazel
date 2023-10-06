@@ -1,0 +1,18 @@
+load(":defs.bzl", "apply_transition")
+load("@bazel_skylib//rules:common_settings.bzl", "string_flag")
+
+string_flag(
+    name = "color",
+    build_setting_default = "default",
+    visibility = ["//visibility:public"],
+)
+
+apply_transition(
+    name = "three",
+    colors = ["red", "green", "blue"],
+)
+
+apply_transition(
+    name = "zero",
+    colors = [],
+)
