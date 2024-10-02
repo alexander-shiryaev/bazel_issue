@@ -1,6 +1,7 @@
-https://github.com/bazelbuild/bazel/issues/TODO
+https://github.com/bazelbuild/bazel/issues/23846
 
 ### Description of the bug:
+
 
 Bazel crashes if, when registering a toolchain, in the chain of its dependencies
 it encounters a target with `target_compatible_with = ["@platforms//:incompatible"]` set.
@@ -48,16 +49,33 @@ Caused by: java.lang.NullPointerException
     ... 7 more
 ```
 
+
+### Which category does this issue belong to?
+
+Configurability, Core
+
+### What's the simplest, easiest way to reproduce this bug? Please provide a minimal example if possible.
+
+
+```
+# https://github.com/alexander-shiryaev/bazel_issue/tree/main/bug/bazel_crash_on_error_during_toolchain_registration
+bazel build :require_toolchain
+```
+
+### Which operating system are you running Bazel on?
+
+
+does not matter
+
 ### What is the output of `bazel info release`?
 
-release 6.1.0
 
+release 7.1.0
 
 ### Have you found anything relevant by searching the web?
 
 No.
 
-
 ### Any other information, logs, or outputs that you want to share?
 
-Code for this proposal: https://github.com/alexander-shiryaev/bazel_issue/tree/main/TODO
+Code for the example: https://github.com/alexander-shiryaev/bazel_issue/tree/main/bug/bazel_crash_on_error_during_toolchain_registration
