@@ -16,6 +16,14 @@ load("@bazel_skylib//:workspace.bzl", "bazel_skylib_workspace")
 bazel_skylib_workspace()
 
 local_repository(
+    name = "bazel_crash_on_error_during_toolchain_registration",
+    path = "bug/bazel_crash_on_error_during_toolchain_registration",
+)
+
+# commented out because it will crash
+#register_toolchains("@bazel_crash_on_error_during_toolchain_registration//:all")
+
+local_repository(
     name = "allow_1_to_0_transition",
     path = "feature_request/allow_1_to_0_transition",
 )

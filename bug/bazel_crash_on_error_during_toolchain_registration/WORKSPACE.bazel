@@ -1,0 +1,3 @@
+workspace(name = "bazel_crash_on_error_during_toolchain_registration")
+
+register_toolchains("//:all")

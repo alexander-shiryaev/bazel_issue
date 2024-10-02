@@ -1,0 +1,41 @@
+load(":defs.bzl", "feature_flag", "require_toolchain", "some_toolchain")
+load("@bazel_skylib//rules:common_settings.bzl", "string_flag")
+
+require_toolchain(
+    name = "require_toolchain",
+)
+
+filegroup(
+    name = "incompatible",
+    target_compatible_with = ["@platforms//:incompatible"],
+)
+
+feature_flag(
+    name = "feature_flag",
+    deps = [":incompatible"],
+)
+
+config_setting(
+    name = "is_toolchain_supported",
+    flag_values = {
+        ":feature_flag": "",
+    },
+)
+
+toolchain_type(
+    name = "toolchain_type",
+)
+
+toolchain(
+    name = "toolchain",
+    target_settings = [
+        ":is_toolchain_supported",
+    ],
+    toolchain = ":some_toolchain",
+    toolchain_type = ":toolchain_type",
+    visibility = ["//visibility:public"],
+)
+
+some_toolchain(
+    name = "some_toolchain",
+)

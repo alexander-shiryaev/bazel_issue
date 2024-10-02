@@ -1,0 +1,8 @@
+module(
+    name = "bazel_crash_on_error_during_toolchain_registration",
+    compatibility_level = 1,
+    repo_name = "bazel_crash_on_error_during_toolchain_registration",
+    version = "0.0",
+)
+
+register_toolchains("//:all")
